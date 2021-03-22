@@ -54,6 +54,7 @@ export class CartService {
       this.cartDataClient.prodData.forEach(p => {
         this.productService.getSingleProduct(p.id).subscribe((actualProdInfo: ProductModelServer) => {
           if (this.cartDataServer.data[0].numInCart === 0) {
+            console.log("dd")
             this.cartDataServer.data[0].numInCart = p.incart;
             this.cartDataServer.data[0].product = actualProdInfo;
             this.CalculateTotal();
@@ -87,8 +88,10 @@ export class CartService {
   AddProductToCart(id: number, quantity?: number) {
 
     this.productService.getSingleProduct(id).subscribe(prod => {
+   //   let index = id === prod.id;
+//console.log("i",index)
       // If the cart is empty
-
+console.log("prod",prod.quantity);
       if (this.cartDataServer.data[0].product === undefined) {
         this.cartDataServer.data[0].product = prod;
         this.cartDataServer.data[0].numInCart = quantity !== undefined ? quantity : 1;
@@ -107,8 +110,12 @@ export class CartService {
       }  // END of IF
       // Cart is not empty
       else {
-        let index = this.cartDataServer.data.findIndex(p => p.product.id === prod.id);
+console.log("not empty")
 
+
+
+        let index = this.cartDataServer.data.findIndex(p => p.product.id === prod.id);
+console.log("index",index);
         // 1. If chosen product is already in cart array
         if (index !== -1) {
 
@@ -128,6 +135,9 @@ export class CartService {
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           })
+
+console.log(quantity)
+
         }
         // 2. If chosen product is not in cart array
         else {
@@ -146,7 +156,11 @@ export class CartService {
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           })
+console.log(quantity)
+
         }
+console.log(quantity)
+
         this.CalculateTotal();
         this.cartDataClient.total = this.cartDataServer.total;
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
@@ -159,6 +173,7 @@ export class CartService {
 
   UpdateCartData(index, increase: Boolean) {
     let data = this.cartDataServer.data[index];
+    console.log("updatedata",data)
     if (increase) {
       // @ts-ignore
       data.numInCart < data.product.quantity ? data.numInCart++ : data.product.quantity;

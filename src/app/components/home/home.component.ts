@@ -32,9 +32,10 @@ id : number
     //this.AddProduct( 1);
   }
 
-  AddProduct(id: number) {
-    this.cartService.AddProductToCart(id);
+  AddProduct(id: number,quantity) {
+    this.cartService.AddProductToCart(id,quantity);
     console.log("id",id)
+    console.log("id",quantity)
   
     window.alert('Your product has been added to the cart!');
 

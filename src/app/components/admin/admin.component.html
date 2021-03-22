@@ -1,0 +1,31 @@
+<html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+    
+<mat-tab-group>
+    <mat-tab label="Products"> 
+        <button (click)="addTable()">Add Row</button> <br> <br>
+	<table class="style">
+		<tr>
+			<th>imagePath</th>
+			<th>title</th>
+			<th>description</th>
+			<th>price</th>
+		</tr>
+		<tr *ngFor="let prod of productss; let i = index">
+			<td><input type="file" >{{prod.imagePath}}</td>
+			<td><input type="text" >{{prod.title}}</td>
+			<td><input type="text">{{prod.description}}</td>
+			<td><input type="number">xx{{prod.price}}</td>
+
+			<td> <button (click) = "deleteRow(i)"><i class="fa fa-trash"></i></button></td>
+		</tr>
+	</table>
+    </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+</body>
+</html>

@@ -20,6 +20,12 @@
             </a>
             
             <div class="cart-dropdown" style="background-color: black;">
+
+            
+              <div class = 'col-md-4 offset-4 mt-5' *ngIf = 'this.isLogin';else>
+                <h1>You are logged in</h1>
+                <button class = 'btn btn-outline-info' (click) = 'logout()'>Log-out</button>
+            </div>
               <div >
 
                 <li class="nav-item">
@@ -31,7 +37,7 @@
                 <!-- <div><a href="signup">signUp</a> | <a href="signup">log in</a></div> -->
 
               </div>
-             
+        
               
             </div>
           </div>

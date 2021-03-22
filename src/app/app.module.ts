@@ -19,6 +19,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastrModule} from 'ngx-toastr';
 
 import { ContactComponent } from './components/contact/contact.component';
+import { AdminComponent } from './components/admin/admin.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { ContactComponent } from './components/contact/contact.component';
     CheckoutComponent,
     ProductComponent,
     ThankyouComponent,
-    ContactComponent
+    ContactComponent,
+    AdminComponent
     
   
   ],
@@ -46,6 +49,7 @@ import { ContactComponent } from './components/contact/contact.component';
     NgxSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
+    MatTabsModule,
 
     ToastrModule.forRoot()
 
